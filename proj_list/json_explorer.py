@@ -9,6 +9,10 @@ JSON_FILE = 'list.json'
 FORUM_LINK = 'https://openreview.net/forum?id={}'
 # Use REPLIES_LINK.format(id) to get link to paper replies
 REPLIES_LINK = 'https://openreview.net/notes?forum={}'
+ISSUES_LINK = 'https://api.github.com/repos/reproducibility-challenge/iclr_2019/issues'
+
+
+github_taken_ids = set([])
 
 
 def get_paper_scores(paper_id):
@@ -20,6 +24,20 @@ def get_paper_scores(paper_id):
 		if 'rating' in note['content']:
 			ratings.append(note['content']['rating'])
 	return ratings
+
+
+def get_all_github_issues():
+	contents = urllib.request.urlopen(ISSUES_LINK + "?page=0")
+	contents = json.load(contents)
+	nextPage = 1
+	while len(contents) > 0:
+		for i in contents:
+			potential_id = i['title'][-12:]
+			if potential_id[0] == '[' and potential_id[-1] == ']':
+				github_taken_ids.add(potential_id[1:-1])
+		contents = urllib.request.urlopen(ISSUES_LINK + "?page={}".format(nextPage))
+		contents = json.load(contents)
+		nextPage += 1
 
 
 class PaperEntry(object):
@@ -41,6 +59,7 @@ class PaperEntry(object):
 		s += "Replies: {}\n".format(self.replies)
 		s += "Keywords: {}\n".format(self.keywords)
 		s += "TL;DR {}\n".format(self.tldr)
+		s += "GitHub claimed: {}\n".format(self.id in github_taken_ids)
 		s += "Link: {}".format(FORUM_LINK.format(self.id))
 		s += "Ratings:\n"
 		for rating in self.ratings:
@@ -60,7 +79,7 @@ if __name__ == '__main__':
 	papers = list(reversed(sorted(json_data, key=lambda paper: paper['details']['replyCount'])))
 	papers = papers[:top_k]
 
-	get_paper_scores(PaperEntry(papers[0]).id)
+	get_all_github_issues()
 
 	if True:
 		for p in papers:
