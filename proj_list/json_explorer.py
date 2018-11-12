@@ -60,7 +60,7 @@ class PaperEntry(object):
 		s += "Keywords: {}\n".format(self.keywords)
 		s += "TL;DR {}\n".format(self.tldr)
 		s += "GitHub claimed: {}\n".format(self.id in github_taken_ids)
-		s += "Link: {}".format(FORUM_LINK.format(self.id))
+		s += "Link: {}\n".format(FORUM_LINK.format(self.id))
 		s += "Ratings:\n"
 		for rating in self.ratings:
 			s += "{}\n".format(rating)
