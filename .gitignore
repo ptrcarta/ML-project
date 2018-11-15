@@ -1,1 +1,2 @@
-proj_list/*
+papers/*.json
+.DS_Store
