@@ -6,6 +6,8 @@ import models.cifar10.cifar10_training as cifar10_training
 import models.cifar10.cifar10_evaluating as cifar10_evaluating
 import models.cifar10.cifar10_nn as cifar10_nn
 
+# Disclaimer: code adapted from 'Advanced Convolutional Neural Networks' (TF tutorial)
+# https://www.tensorflow.org/tutorials/images/deep_cnn
 
 class cifar10_model(AbstractModel):
 
