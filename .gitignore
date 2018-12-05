@@ -1,2 +1,6 @@
 papers/*.json
 .DS_Store
+
+*.pyc
+
+data/*
