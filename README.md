@@ -11,7 +11,7 @@
 
 - `/papers` how to download and parse all papers submitted to the ICLR conference at  [openreview.net](https://openreview.net/group?id=ICLR.cc/2019/Conference)¨
 
-- `/models` NN-models (CIFAR, .. ) are implemented, trained and backtested
+- `/models` NN-models are implemented, trained and evaluated
 
 - `/fingerprints` different models are trained with fingerprints
 
