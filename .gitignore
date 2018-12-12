@@ -4,3 +4,4 @@ papers/*.json
 *.pyc
 
 data/*
+jupyter/.ipynb_checkpoints
