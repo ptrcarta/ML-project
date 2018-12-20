@@ -20,7 +20,7 @@ Our approach has been first to download all papers locally, then order by number
 ## Code
 An executed version of the Jupyter Notebook is accessible online at the following address: [go.epfl.ch/neural-fingerprinting](https://go.epfl.ch/neural-fingerprinting)
 
-The same version is also available locally at the following path: `/run.ipynb`
+The same version is also available locally at the following path: `./run.ipynb`
 
 ## Paper
 Our research is coupled with a paper available here: [paper.pdf](/paper.pdf)
