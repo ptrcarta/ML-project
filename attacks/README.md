@@ -1,3 +1,0 @@
-# ATTACK
-
-Attack code
